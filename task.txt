@@ -6,4 +6,4 @@ php artisan make:model comment -fm
 php artisan make:model state -fm
 php artisan make:migration crate_article_tag_table
 
-hello
+hello!!!

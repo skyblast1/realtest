@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('states', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->Integer('likes');
+            $table->Integer('views');
+            $table->unsignedBigInteger('article_id');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+
+            //$table->timestamps();
         });
     }
 

@@ -1,3 +1,5 @@
+#модели, миграции и фабрики
+
 php artisan make:model article -fm
 php artisan make:model tag -fm
 php artisan make:model comment -fm

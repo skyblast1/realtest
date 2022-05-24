@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\State;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +15,14 @@ class StateFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    protected $model = State::class;
+
     public function definition()
     {
         return [
-            //
+            'likes' => $this->faker->numberBetween(1, 20),
+            'views' => $this->faker->numberBetween(21, 100)
         ];
     }
 }

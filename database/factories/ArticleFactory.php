@@ -27,7 +27,7 @@ class ArticleFactory extends Factory
             'title' => $title,
             'body' => $this->faker->paragraph(100, true),
             'slug' => $slug,
-            'img' => 'https://imgholder.ru/600x600/8493a8/adb9ca.jpg&text=Laravel+9.13*&font=kelson',
+            'img' => 'https://imgholder.ru/300x300/8493a8/adb9ca.jpg&text=Laravel+9.13*&font=kelson',
             'created_at' => $this->faker->dateTimeBetween('-1 years')
         ];
     }

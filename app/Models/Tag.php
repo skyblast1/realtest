@@ -14,7 +14,7 @@ class Tag extends Model
     public $timestamps = false;
 
     public function articles() {
-        return $this->belongsToMany(article::class);
+        return $this->belongsToMany(Article::class);
     }
 
 }

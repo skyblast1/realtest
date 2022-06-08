@@ -8,7 +8,7 @@ use App\Models\Article;
 
 class HomeController extends Controller
 {
-    public function index ($id) {
+    public function index () {
         //$articles = Article::with('tags','states')->orderBy('created_at', 'desc')->take(6)->get();
 
         //$article = Article::find($id);

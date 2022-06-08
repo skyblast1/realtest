@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArticlesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,10 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/{id}', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
+
+Route::get('/articles/{slug}',[ArticlesController::class, 'oneArticle'])->name('articles.one');
+
+Route::get('/articles/tags/{tag}',[ArticlesController::class, 'allByTag'])->name('articles.tag');

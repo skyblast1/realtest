@@ -40,7 +40,7 @@ class Article extends Model
         return $query->with('states', 'tags')->orderBy('created_at', 'desc')->paginate($number);
     }
 
-    public function scopeOneArticle($query, $slug) {
+    public function scopeFindBySlug($query, $slug) {
         return $query->with('states', 'tags', 'comments')->where('slug', $slug)->firstOrFail();
     }
 }

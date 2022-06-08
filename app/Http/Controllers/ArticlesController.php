@@ -2,20 +2,28 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 
 use App\Models\Article;
+use App\Models\Tag;
 
 class ArticlesController extends Controller
 {
     public function index () {
         $articles = Article::allArticlesPagination(6);
 
-        return view('app.index', compact('articles'));
+        return view('app.article.index', compact('articles'));
     }
 
     public function oneArticle ($slug) {
-        $article = Article::oneArticle($slug);
-        return view('app.article.index', compact('article'));
+        $article = Article::findBySlug($slug);
+        return view('app.article.show', compact('article'));
+    }
+
+    public function allByTag(Tag $tag) {
+        $articles = $tag->articles()->findByTag();
+
+        return view('app.article.byTag', compact('articles'));
     }
 }

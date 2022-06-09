@@ -1,26 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row mt-5">
-        <div class="col-4 pb-3">
-            <div class="card">
-                <img src="{{$article->img}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{$article->title}}</h5>
-                    <p class="card-text">{{$article->getBodyWithLimit()}}</p>
-                    <p>{{$article->createdAtForHumans()}}</p>
-                    <div class="mt-3">
-                        <span class="badge bg-primary"><i class="far fa-thumbs-up">{{$article->states->likes}}</i></span>
-                        <span class="badge bg-primary"><i class="far fa-eye">{{$article->states->views}}</i></span>
+<div id="app">
+    <div class="row mt-5">
+        <div class="col-12 p-3">
+            <img src="{{$article->img}}" class="border rounded mx-auto d-block" alt="...">
+            <h5 class="mt-5">{{$article->title}}</h5>
+            <p>
+                @foreach($article->tags as $tag)
+                    @if($loop->last)
+                        <span class="tag">{{$tag->label}}</span>
+                    @else
+                        <span class="tag">{{$tag->label}} |</span>
+                    @endif
+                @endforeach
+            </p>
+            <p class="card-text">{{$article->body}}</p>
+            <p>Опубликовано: {{$article->createdAtForHumans()}}</p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <form action="#" method="">
+            <div class="mb-3">
+                <label for="commentSubject" class="form-label">Тема комментария</label>
+                <input type="text" class="form-control" id="commentSubject">
+            </div>
+            <div class="mb-3">
+                <label for="commentBody" class="form-label">Комментарий</label>
+                <textarea class="form-control" id="commentBody" rows="3"></textarea>
+            </div>
+            <button class="btn btn-success" type="submit">Отправить</button>
+        </form>
+        <div class="toast-container pb-5 mt-5 mx-auto">
+            @foreach($article->comments as $comment)
+                <div class="" style="width: 100%">
+                    <div class="toast-header">
+                        <img src="" class="rounded me-2" alt="...">
+                        <strong class="me-auto">{{$comment->subject}}</strong>
+                        <small class="text-muted">{{$comment->createdAtForHumans()}}</small>
                     </div>
-                    <div class="mt-4">
-                        Теги:
-                        @foreach($article->tags as $tag)
-                            <a href="#" class="badge bg-danger">{{$tag->label}}</a>
-                        @endforeach
+                    <div class="toast-body">
+                        {{$comment->body}}
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
+    </div>
+
+
 </div>
 @endsection
